@@ -1,27 +1,3 @@
-"""
-Separar as funções existentes de saque depósito extrato em fundições. Criar 2 novas funções cadastrar usuário, cadastrar conta bancária.
-Deixar o código mais modularizado criar funções para operações existentes: sacar, depositar e visualizar histórico final além disso,
-para as versões 2 do nosso sistema precisamos criar 2 novas funções: criar usuário cliente do banco e criar conta corrente vincular com o usuário
-A função saque deve receber os argumentos apenas por nome. Sugestão de argumentos: saldo, valor, extrato, limite número_saques, limite_saques.
-Sugestão de retorno: saldo e extrato.
-A função extrato deve receber os argumentos na posição e nome. Argumentos posicionais: saldo argumento os nomeados: estratos.
-Criar 2 novas funções: criar usuário e criar conta corrente.
-O programa deve armazenar os usuários em uma lista um usuário é composto por: nome data de nascimento CPF e endereço final,
-o endereço é um me string com formato: Logradouro, número, bairro, cidade / sigla estado. Deve ser armazenado somente
-os números do CPF não podemos cadastrar 2 usuários com o mesmo CPF.
-O programa deve armazenar contas em uma lista uma conta é composta por: agência número da conta e usuário e o número da conta
-é sequencial, iniciando em 1. O número da agência é fixo: ”0001”. O usuário pode ter mais de uma conta, mas uma conta pertence a somente um usuário.
-Para vincular um usuário a uma conta filtre a lista de usuários buscando o número do CPF informado para cada usuário da lista.
-
-"""
-
-'''
-O programa deve armazenar os usuários em uma lista um usuário é composto por: nome data de nascimento CPF e endereço final,
-o endereço é um me string com formato: Logradouro, número, bairro, cidade / sigla estado. Deve ser armazenado somente
-os números do CPF não podemos cadastrar 2 usuários com o mesmo CPF.
-'''
-
-
 # Permitir deposito, saque, extrato, casdastrar usuário e cadastrar conta corrente.
 import time
 from datetime import datetime
