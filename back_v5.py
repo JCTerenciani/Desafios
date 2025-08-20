@@ -227,13 +227,16 @@ class Deposito(Transacao):
             conta.historico.adicionar_transacao(self)
 
 
+from pathlib import Path
+ROOT_PATH = Path(__file__).parent
+
 def log_transacao(func):
     def envelope(*args, **kwargs):
         resultado = func(*args, **kwargs)
         data_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         try:
-            with open("log.txt", "a", encoding="utf-8") as historico:
+            with open(ROOT_PATH / "log.txt", "a", encoding="utf-8") as historico:
                 data_hora = f"{data_hora}: {func.__name__.upper()}"
 
                 # Linha corrigida abaixo:
@@ -275,7 +278,7 @@ def recuperar_conta_cliente(cliente):
     return cliente.contas[0]
 
 
-@log_transacao
+@transacao
 def depositar(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -294,7 +297,7 @@ def depositar(clientes):
     cliente.realizar_transacao(conta, transacao)
 
 
-@log_transacao
+@transacao
 def sacar(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -313,7 +316,7 @@ def sacar(clientes):
     cliente.realizar_transacao(conta, transacao)
 
 
-@log_transacao
+@transacao
 def exibir_extrato(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -341,7 +344,7 @@ def exibir_extrato(clientes):
     print("==========================================")
 
 
-@log_transacao
+@transacao
 def criar_cliente(clientes):
     cpf = input("Informe o CPF (somente número): ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -361,7 +364,7 @@ def criar_cliente(clientes):
     print("\n=== Cliente criado com sucesso! ===")
 
 
-@log_transacao
+@transacao
 def criar_conta(numero_conta, clientes, contas):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -417,3 +420,4 @@ def main():
 
 
 main()
+
